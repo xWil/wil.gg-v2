@@ -1,3 +1,6 @@
+@import "tailwindcss";
+@config "../tailwind.config.ts";
+
 body{
   background-color: hsl(0, 0%, 15%);
   margin: 0;
