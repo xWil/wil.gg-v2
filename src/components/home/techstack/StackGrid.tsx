@@ -6,7 +6,7 @@ function StackGrid() {
             <StackList title="Languages" items={["Java", "JS/TS", "HTML & CSS"]}/>
             <StackList title="Frameworks" items={["Spring", "React"]}/>
             <StackList title="Database" items={["MySQL", "PostgreSQL"]}/>
-            <StackList title="Other" items={["Tailwind CSS", "Git"]}/>
+            <StackList title="Other" items={["Tailwind", "Git"]}/>
         </div>
     )
 }

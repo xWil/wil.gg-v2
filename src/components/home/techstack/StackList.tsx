@@ -5,7 +5,7 @@ interface StackListProps {
 
 function createListItem(item:string) {
     return (
-        <div key={item} className="w-fit text-xl text-text-primary transition-normal duration-200 hover:text-white">{item}</div>
+        <div key={item} className="w-fit text-xl text-text-primary transition-normal duration-200 hover:text-white hover:text-shadow-xs hover:text-shadow-[#707070]">{item}</div>
     )
 }
 

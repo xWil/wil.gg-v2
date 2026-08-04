@@ -10,6 +10,7 @@ export default {
             colors: {
                 "text-primary": "#e6e6e6",
                 "text-secondary": "#b3b3b3",
+                "text-favourite": "#FF5555",
                 "background": "#0c0c0c",
                 "background-light": "#1a1a1a",
                 "background-light-hover": "#262626",
