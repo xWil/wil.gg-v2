@@ -8,7 +8,7 @@ function TechStack() {
 
     return (
         <div ref={ref} className={`flex flex-col transition-all duration-800 ${isVisible ? "" : "translate-y-10 opacity-0"}`}>
-            <div className="text-xl text-text-secondary mb-6">Tech Stack</div>
+            <div className="text-text-secondary mb-4">Tech Stack</div>
             <StackGrid/>
         </div>
     )

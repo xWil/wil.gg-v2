@@ -7,14 +7,14 @@ function Info() {
     const isInfoVisible: boolean = observeVisible(info);
 
     return (
-        <div ref={info} className={`text-text-secondary text-lg md:text-2xl text-pretty max-w-[64ch] transition-all duration-1000 ${isInfoVisible ? "" : "-translate-x-10 opacity-0"}`}>
-            I am an
+        <div ref={info} className={`text-text-secondary md:text-lg text-pretty max-w-[64ch] transition-all duration-1000 ${isInfoVisible ? "" : "-translate-x-10 opacity-0"}`}>
+            I am a
+            <DescriptionHighlight text=" UK "/>
+            based,
             <DescriptionHighlight text=" Oracle certified "/>
             Java developer with
             <DescriptionHighlight text=" 6+ years "/>
-            of experience based in the
-            <DescriptionHighlight text=" UK"/>
-            .
+            of experience.
         </div>
     )
 }
