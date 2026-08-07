@@ -1,6 +1,7 @@
 import DotBackground from "./components/background/DotBackground.tsx";
 import About from "./components/home/About.tsx"
 import Navbar from "./components/navbar/Navbar.tsx";
+import Projects from "./components/projects/Projects.tsx";
 
 function App() {
     /*
@@ -24,6 +25,7 @@ function App() {
           <Navbar/>
           <main id="main" className="h-fit">
               <About/>
+              <Projects/>
           </main>
       </div>
   )
