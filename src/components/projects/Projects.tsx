@@ -18,13 +18,14 @@ function Projects() {
     return (
         <section id="projects" className="relative h-fit w-full">
             <Project visible={true} stick={firstVisible}
-                     header={{ icon: "/pfp.gif", alt: "Project icon", name: "Imposter" }}
+                     header={{ icon: "/projects/imposter/imposter-logo.svg", alt: "Imposter icon", name: "Imposter" }}
                      description="Imposter is a web-based party game where one player is designated as the imposter, and everyone has to guess who!"
                      details={[
                          {category: "Language", details: "Java, JavaScript, HTML & CSS"},
                          {category: "Frontend", details: "React, Tailwind"},
                          {category: "Backend", details: "Spring / SpringBoot"}
                      ]} link={{ link: "https://imposter.wil.gg/", text: "imposter.wil.gg" }}
+                     images={["/projects/imposter/imposter-lobby.png", "/projects/imposter/imposter-question.png", "/projects/imposter/imposter-answers.png", "/projects/imposter/imposter-leaderboard.png"]}
             />
             <Project visible={!firstVisible} stick={secondVisible}
                      header={{ icon: "/pfp.gif", alt: "Project icon", name: "VLRScraper" }}
@@ -33,6 +34,7 @@ function Projects() {
                          {category: "Language", details: "Java, JavaFX, CSS"},
                          {category: "Database", details: "MySQL, SQLite"}
                      ]} link={{ link: "https://https://github.com/xWil", text: "github" }}
+                     images={["/projects/imposter/imposter-lobby.png", "/projects/imposter/imposter-question.png", "/projects/imposter/imposter-answers.png", "/projects/imposter/imposter-leaderboard.png"]}
             />
             <Project visible={!secondVisible} stick={true}
                      header={{ icon: "/pfp.gif", alt: "Project icon", name: "SubwayCrafters" }}
@@ -42,6 +44,7 @@ function Projects() {
                          {category: "Platform", details: "Spigot, Paper"},
                          {category: "Database", details: "PostgreSQL, MySQL, SQLite"}
                      ]} link={{ link: "https://https://github.com/xWil", text: "github" }}
+                     images={["/projects/imposter/imposter-lobby.png", "/projects/imposter/imposter-question.png", "/projects/imposter/imposter-answers.png", "/projects/imposter/imposter-leaderboard.png"]}
             />
             <div className="h-screen w-full invisible"/>
             <div ref={firstRef} className="absolute top-[25%] size-2"/>
