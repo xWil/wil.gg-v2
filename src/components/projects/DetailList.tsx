@@ -5,8 +5,8 @@ export interface DetailProps {
 
 function DetailList({ details }: { details: DetailProps }) {
     return (
-        <div className="w-full text-text-secondary text-sm">
-            <span className="text-text-primary text-sm font-bold">{details.category}: </span>
+        <div className="w-full text-text-secondary text-xs md:text-sm 4xl:text-[1rem]">
+            <span className="text-text-primary font-bold">{details.category}: </span>
             {details.details}
         </div>
     )

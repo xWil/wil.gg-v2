@@ -21,7 +21,7 @@ function Projects() {
                      header={{ icon: "/projects/imposter/imposter-logo.svg", alt: "Imposter icon", name: "Imposter" }}
                      description="Imposter is a web-based party game where one player is designated as the imposter, and everyone has to guess who!"
                      details={[
-                         {category: "Language", details: "Java, JavaScript, HTML & CSS"},
+                         {category: "Language", details: "Java, JavaScript, HTML, CSS"},
                          {category: "Frontend", details: "React, Tailwind"},
                          {category: "Backend", details: "Spring / SpringBoot"}
                      ]} link={{ link: "https://imposter.wil.gg/", text: "imposter.wil.gg" }}

@@ -8,7 +8,7 @@ function createDetailList(details: DetailProps) {
 
 function ProjectDetails({ detailsArray }: {detailsArray: DetailProps[]}) {
     return (
-        <div className="flex flex-col w-full h-fit gap-0.5 mb-4">
+        <div className="flex flex-col w-full h-fit gap-0.5 mb-4 4xl:mb-6">
             { detailsArray.map((details: DetailProps) => createDetailList(details)) }
         </div>
     )
