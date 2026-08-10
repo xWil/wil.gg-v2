@@ -1,6 +1,6 @@
 function getImage(image: string) {
     return (
-        <img src={image} alt="Project image" className="aspect-square object-cover rounded-sm shadow-black shadow-xs"/>
+        <img src={image} alt="Project image" loading="lazy" decoding="async" className="aspect-square object-cover rounded-sm shadow-black shadow-xs"/>
     )
 }
 
