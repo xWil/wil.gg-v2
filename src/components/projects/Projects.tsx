@@ -11,10 +11,6 @@ function Projects() {
     const secondRef = useRef<HTMLDivElement>(null);
     observe(secondRef, () => setSecondVisible(true), () => setSecondVisible(false), {threshold: 1})
 
-    //const [thirdVisible, setThirdVisible] = useState(false);
-    //const thirdRef = useRef<HTMLDivElement>(null);
-    //observe(thirdRef, () => setThirdVisible(true), () => setThirdVisible(false), {threshold: 1})
-
     return (
         <section id="projects" className="relative h-fit w-full">
             <Project visible={true} stick={firstVisible}
@@ -33,7 +29,7 @@ function Projects() {
                      details={[
                          {category: "Language", details: "Java, JavaFX, CSS"},
                          {category: "Database", details: "MySQL, SQLite"}
-                     ]} link={{ link: "https://https://github.com/xWil", text: "github" }}
+                     ]} link={null}
                      images={["/projects/vlrscraper/vlrscraper-player.png", "/projects/vlrscraper/vlrscraper-team.png", "/projects/vlrscraper/vlrscraper-leaderboard.png", "/projects/vlrscraper/vlrscraper-dashboard.png"]}
             />
             <Project visible={!secondVisible} stick={true}
@@ -43,7 +39,7 @@ function Projects() {
                          {category: "Language", details: "Java"},
                          {category: "Platform", details: "Spigot, Paper"},
                          {category: "Database", details: "PostgreSQL, MySQL, SQLite"}
-                     ]} link={{ link: "https://https://github.com/xWil", text: "github" }}
+                     ]} link={null}
                      images={["/projects/imposter/imposter-lobby.png", "/projects/imposter/imposter-question.png", "/projects/imposter/imposter-answers.png", "/projects/imposter/imposter-leaderboard.png"]}
             />
             <div className="h-screen w-full invisible"/>

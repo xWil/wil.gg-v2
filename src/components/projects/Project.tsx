@@ -10,7 +10,7 @@ interface ProjectProps {
     header: HeaderProps,
     description: string,
     details: DetailProps[],
-    link: ProjectLinkProps,
+    link: ProjectLinkProps | null,
     images: string[]
 }
 
@@ -22,9 +22,9 @@ function Project({ visible, stick, header, description, details, link, images }:
                 <div className="w-full h-fit flex gap-4 md:gap-8 items-center justify-between max-sm:flex-col">
                     <div className="justify-start flex flex-col">
                         <ProjectHeader header={header}/>
-                        <span className="text-sm md:text-md 4xl:text-xl text-text-secondary max-w-[24ch] md:max-w-[30ch] mb-4 4xl:mb-6">{description}</span>
+                        <span className="text-sm md:text-[1rem] 4xl:text-xl text-text-secondary max-w-[24ch] md:max-w-[30ch] mb-4 4xl:mb-6">{description}</span>
                         <ProjectDetails detailsArray={details}/>
-                        <ProjectLink link={link}/>
+                        {link ? <ProjectLink link={link}/> : "" }
                     </div>
                     <ProjectImages images={images}/>
                 </div>
