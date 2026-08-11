@@ -1,4 +1,4 @@
-import {type RefObject, useEffect, useState} from "react";
+import {type RefObject, useEffect, useRef, useState} from "react";
 
 export function observeVisible(ref: RefObject<HTMLElement | null>): boolean {
     const [isIntersecting, setIntersecting] = useState(false);
@@ -23,21 +23,29 @@ export function observeVisible(ref: RefObject<HTMLElement | null>): boolean {
     return isIntersecting;
 }
 
-export function observe(ref: RefObject<HTMLElement | null>, enter: Function, exit: Function, options: IntersectionObserverInit) {
+export function observe(ref: RefObject<HTMLElement | null>, enter: (entry: IntersectionObserverEntry) => void, exit: (entry: IntersectionObserverEntry) => void, options: IntersectionObserverInit, enabled: boolean = true) {
+    const enterRef = useRef(enter);
+    const exitRef = useRef(exit);
+    const optionsRef = useRef(options);
+    enterRef.current = enter;
+    exitRef.current = exit;
+    optionsRef.current = options;
+
     useEffect(() => {
         const element = ref.current;
-        if (!element) return;
+        if (!element || !enabled) return;
 
         const observer = new IntersectionObserver(([entry]) => {
             if (entry.isIntersecting) {
-                enter();
+                enterRef.current(entry);
             } else {
-                exit();
+                exitRef.current(entry);
             }
-        }, options)
+        }, optionsRef.current);
 
         observer.observe(element);
-    }, []);
+        return () => observer.disconnect();
+    }, [ref, enabled]);
 }
 
 export function observeMultiple(refs: RefObject<HTMLElement | null>[], enter: Function, exit: Function, options: IntersectionObserverInit) {
