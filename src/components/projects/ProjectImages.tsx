@@ -2,7 +2,8 @@ import {useImage} from "../imageview/ImageContext.tsx";
 
 function getImage(image: string, setImage: Function) {
     return (
-        <img src={image} alt="Project image" loading="lazy" decoding="async" onClick={() => setImage(image)} className="aspect-square object-cover rounded-sm shadow-black shadow-xs cursor-zoom-in transition-all duration-200 hover:scale-[1.02]"/>
+        <img src={image} alt="Project image" loading="lazy" decoding="async" onClick={() => setImage(image)}
+             className="aspect-square object-cover rounded-sm shadow-black shadow-xs cursor-zoom-in transition-transform duration-200 hover:scale-[1.02]"/>
     )
 }
 
