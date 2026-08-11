@@ -2,6 +2,8 @@ import DotBackground from "./components/background/DotBackground.tsx";
 import About from "./components/home/About.tsx"
 import Navbar from "./components/navbar/Navbar.tsx";
 import Projects from "./components/projects/Projects.tsx";
+import ImageView from "./components/imageview/ImageView.tsx";
+import {ImageProvider} from "./components/imageview/ImageContext.tsx";
 
 function App() {
     /*
@@ -20,14 +22,17 @@ function App() {
     });
      */
   return (
-      <div id="top" className="relative w-full">
-          <DotBackground/>
-          <Navbar/>
-          <main id="main" className="h-fit">
-              <About/>
-              <Projects/>
-          </main>
-      </div>
+      <ImageProvider>
+          <div id="top" className="relative w-full">
+              <ImageView/>
+              <DotBackground/>
+              <Navbar/>
+              <main id="main" className="h-fit">
+                  <About/>
+                  <Projects/>
+              </main>
+          </div>
+      </ImageProvider>
   )
 }
 
