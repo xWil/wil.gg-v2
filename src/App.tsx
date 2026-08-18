@@ -4,6 +4,7 @@ import Navbar from "./components/navbar/Navbar.tsx";
 import Projects from "./components/projects/Projects.tsx";
 import ImageView from "./components/imageview/ImageView.tsx";
 import {ImageProvider} from "./components/imageview/ImageContext.tsx";
+import Contact from "./components/contact/Contact.tsx";
 
 function App() {
     /*
@@ -30,6 +31,7 @@ function App() {
               <main id="main" className="h-fit">
                   <About/>
                   <Projects/>
+                  <Contact/>
               </main>
           </div>
       </ImageProvider>
