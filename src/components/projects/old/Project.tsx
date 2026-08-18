@@ -1,11 +1,11 @@
-import ProjectHeader, {type HeaderProps} from "./ProjectHeader.tsx";
-import ProjectDetails from "./ProjectDetails.tsx";
-import type {DetailProps} from "./DetailList.tsx";
-import ProjectLink, {type ProjectLinkProps} from "./ProjectLink.tsx";
+import ProjectHeader, {type HeaderProps} from "../ProjectHeader.tsx";
+import ProjectDetails from "../ProjectDetails.tsx";
+import type {DetailProps} from "../DetailList.tsx";
+import ProjectLink, {type ProjectLinkProps} from "../ProjectLink.tsx";
 import ProjectImages from "./ProjectImages.tsx";
-import ProjectDescription from "./ProjectDescription.tsx";
+import ProjectDescription from "../ProjectDescription.tsx";
 import {useRef, useState} from "react";
-import {observe} from "../../ObserveVisibleHook.tsx";
+import {observe} from "../../../ObserveVisibleHook.tsx";
 
 interface ProjectProps {
     visible: boolean,

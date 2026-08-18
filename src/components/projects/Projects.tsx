@@ -1,52 +1,50 @@
-import Project from "./Project.tsx";
-import {useRef, useState} from "react";
-import {observe} from "../../ObserveVisibleHook.tsx";
+import {useEffect, useRef, useState} from "react";
+import ProjectInfo from "./ProjectInfo.tsx";
+import ProjectImages from "./ProjectImages.tsx";
+import {projects} from "./ProjectData.tsx";
 
 function Projects() {
-    const [firstVisible, setFirstVisible] = useState(false);
-    const firstRef = useRef<HTMLDivElement>(null);
-    observe(firstRef, () => setFirstVisible(true), () => setFirstVisible(false), {threshold: 1})
+    const [active, setActive] = useState(0);
+    const bands = useRef<(HTMLDivElement | null)[]>([]);
 
-    const [secondVisible, setSecondVisible] = useState(false);
-    const secondRef = useRef<HTMLDivElement>(null);
-    observe(secondRef, () => setSecondVisible(true), () => setSecondVisible(false), {threshold: 1})
+    useEffect(() => {
+        const observer = new IntersectionObserver((entries) => {
+            for (const entry of entries) {
+                if (!entry.isIntersecting) continue;
+                setActive(Number((entry.target as HTMLElement).dataset.index));
+            }
+        }, {rootMargin: "-50% 0px -50% 0px", threshold: 0});
+
+        bands.current.forEach((band) => band && observer.observe(band));
+        return () => observer.disconnect();
+    }, []);
 
     return (
-        <section id="projects" className="relative h-fit w-full">
-            <Project visible={true} stick={firstVisible}
-                     header={{ icon: "/projects/imposter/imposter-icon.svg", alt: "Imposter icon", name: "Imposter" }}
-                     description="Imposter is a web-based party game where one player is designated as the imposter, and everyone has to guess who!"
-                     details={[
-                         {category: "Language", details: "Java, JavaScript, HTML, CSS"},
-                         {category: "Frontend", details: "React, Tailwind"},
-                         {category: "Backend", details: "Spring / SpringBoot"}
-                     ]} link={{ link: "https://imposter.wil.gg/", text: "imposter.wil.gg" }}
-                     images={["/projects/imposter/imposter-lobby.png", "/projects/imposter/imposter-question.png", "/projects/imposter/imposter-answers.png", "/projects/imposter/imposter-leaderboard.png"]}
-            />
-            <Project visible={!firstVisible} stick={secondVisible}
-                     header={{ icon: "/projects/vlrscraper/vlrscraper-icon.png", alt: "Project icon", name: "VLRScraper" }}
-                     description="VLRScraper is a web-scraper and statistics analysis tool for VCT match data, sourced from VLR."
-                     details={[
-                         {category: "Language", details: "Java, JavaFX, CSS"},
-                         {category: "Database", details: "MySQL, SQLite"}
-                     ]} link={null}
-                     images={["/projects/vlrscraper/vlrscraper-player.png", "/projects/vlrscraper/vlrscraper-team.png", "/projects/vlrscraper/vlrscraper-leaderboard.png", "/projects/vlrscraper/vlrscraper-dashboard.png"]}
-            />
-            <Project visible={!secondVisible} stick={true}
-                     header={{ icon: "/pfp.gif", alt: "Project icon", name: "SubwayCrafters" }}
-                     description="SubwayCrafters is a feature-rich, infinitly generating runner game, built on Spigot."
-                     details={[
-                         {category: "Language", details: "Java"},
-                         {category: "Platform", details: "Spigot, Paper"},
-                         {category: "Database", details: "PostgreSQL, MySQL, SQLite"}
-                     ]} link={null}
-                     images={["/projects/imposter/imposter-lobby.png", "/projects/imposter/imposter-question.png", "/projects/imposter/imposter-answers.png", "/projects/imposter/imposter-leaderboard.png"]}
-            />
-            <div className="h-screen w-full invisible"/>
-            <div ref={firstRef} className="absolute top-[25%] size-2"/>
-            <div ref={secondRef} className="absolute top-[50%] size-2"/>
+        <section id="projects" className="relative w-full" style={{height: `${projects.length * 100}dvh`}}>
+            {projects.map((project, i) => (
+                <div key={project.header.name} data-index={i}
+                     ref={(el) => { bands.current[i] = el; }}
+                     className="absolute left-0 w-full h-dvh pointer-events-none"
+                     style={{top: `${i * 100}dvh`}}/>
+            ))}
+
+            <div className="sticky top-0 h-dvh w-full pb-8 md:pb-16 pt-18 md:pt-32 px-4 md:px-8 lg:px-16 xl:px-24 4xl:px-32 flex flex-col items-center justify-center">
+                <div className="w-full px-4 md:px-12 lg:px-20 xl:px-28 2xl:px-48 4xl:px-64 flex flex-col">
+                    <span className="xs:max-sm:text-center text-5xl md:text-4xl lg:text-6xl 4xl:text-7xl text-text-primary font-bold mb-12 md:mb-16">Projects</span>
+
+                    <div className="w-full h-fit flex gap-4 md:gap-8 items-center justify-between max-sm:flex-col">
+                        <div className="grid">
+                            {projects.map((project, i) => (
+                                <ProjectInfo key={project.header.name} project={project} position={i - active}/>
+                            ))}
+                        </div>
+
+                        <ProjectImages imageSets={projects.map((project) => project.images)} active={active}/>
+                    </div>
+                </div>
+            </div>
         </section>
-    )
+    );
 }
 
 export default Projects;
