@@ -1,6 +1,6 @@
 import SectionTitle from "../common/SectionTitle.tsx";
-import ContactField from "../common/ContactField.tsx";
-import SendButton from "../common/SendButton.tsx";
+import ContactField from "./ContactField.tsx";
+import SendButton from "./SendButton.tsx";
 import * as React from "react";
 
 function Contact() {
@@ -27,7 +27,7 @@ function Contact() {
 
     return (
         <section id="contact" className="min-h-screen pb-16 pt-32 px-4 md:px-8 lg:px-16 xl:px-24 flex flex-col items-center justify-center">
-            <div className="flex flex-col mx-8 md:mx-16 lg:mx-24 xl:mx-32 w-fit h-fit min-w-[50%]">
+            <div className="flex flex-col h-fit w-full max-w-[clamp(20rem,80vw,42rem)]">
                 <SectionTitle title="Contact"/>
                 <form noValidate={true} onSubmit={handleSubmit} className="flex flex-col gap-5">
                     <div className="flex max-sm:flex-col gap-5 w-full">
