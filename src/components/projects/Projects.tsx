@@ -33,7 +33,7 @@ function Projects() {
                 <div className="w-full px-4 md:px-12 lg:px-20 xl:px-28 2xl:px-48 4xl:px-64 flex flex-col">
                     <SectionTitle title="Projects"/>
 
-                    <div className="w-full h-fit flex gap-4 md:gap-8 items-center justify-between max-sm:flex-col">
+                    <div className="w-full h-fit flex gap-4 md:gap-8 items-center justify-between max-sm:flex-col mt-12 md:mt-16">
                         <div className="grid">
                             {projects.map((project, i) => (
                                 <ProjectInfo key={project.header.name} project={project} position={i - active}/>
