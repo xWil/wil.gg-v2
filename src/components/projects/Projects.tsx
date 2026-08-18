@@ -30,7 +30,7 @@ function Projects() {
 
             <div className="sticky top-0 h-dvh w-full pb-8 md:pb-16 pt-18 md:pt-32 px-4 md:px-8 lg:px-16 xl:px-24 4xl:px-32 flex flex-col items-center justify-center">
                 <div className="w-full px-4 md:px-12 lg:px-20 xl:px-28 2xl:px-48 4xl:px-64 flex flex-col">
-                    <span className="xs:max-sm:text-center text-5xl md:text-4xl lg:text-6xl 4xl:text-7xl text-text-primary font-bold mb-12 md:mb-16">Projects</span>
+                    <span className="w-fit xs:max-sm:text-center text-5xl md:text-4xl lg:text-6xl 4xl:text-7xl text-text-primary font-bold mb-12 md:mb-16 transition-colors duration-500 hover:text-text-favourite">Projects</span>
 
                     <div className="w-full h-fit flex gap-4 md:gap-8 items-center justify-between max-sm:flex-col">
                         <div className="grid">
