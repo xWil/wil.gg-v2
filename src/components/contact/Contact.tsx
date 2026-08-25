@@ -8,13 +8,14 @@ function Contact() {
     const [message, setMessage] = useState("");
     const [success, setSuccess]= useState(false);
 
-    const handleSubmit: React.SubmitEventHandler<HTMLFormElement> = (event) => {
+    const handleSubmit: React.SubmitEventHandler<HTMLFormElement> = async (event) => {
         event.preventDefault();
 
-        const data = new FormData(event.currentTarget);
+        const form = event.currentTarget;
+        const data = new FormData(form);
         const name = (data.get("name") as string).trim();
         const email = (data.get("email") as string).trim();
-        const message = (data.get("message") as string).trim();
+        const content = (data.get("message") as string).trim();
 
         if (name.length === 0) {
             setSuccess(false);
@@ -24,13 +25,40 @@ function Contact() {
             setSuccess(false);
             setMessage("Email field is required")
             return;
-        } else if (message.length === 0) {
+        } else if (content.length === 0) {
             setSuccess(false);
             setMessage("Message field is required")
             return;
         }
 
-        console.log({name, email, message});
+        const params = new URLSearchParams({ name, email, content });
+
+        let response: Response;
+        let responseData: { reason?: string; message?: string } = {};
+        try {
+            response = await fetch(`https://wil.gg/api/message?${params}`, { method: "GET" });
+            responseData = await response.json().catch(() => ({}));
+        } catch {
+            setSuccess(false);
+            setMessage("Couldn't connect to API");
+            return;
+        }
+
+        if (!response.ok) {
+            setSuccess(false);
+
+            switch (responseData.reason) {
+                case "INVALID_FIELD":
+                    const message = responseData.message as string;
+                    const index = message.indexOf("'") + 1;
+                    const fieldName = message.substring(index + 1, message.lastIndexOf("'"));
+                    setMessage(message.charAt(index).toUpperCase() + fieldName + " is invalid.")
+                    break;
+            }
+            return;
+        }
+
+        form.reset();
         setSuccess(true);
         setMessage("Message sent!")
     };
