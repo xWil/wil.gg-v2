@@ -33,8 +33,8 @@ export const projects: ProjectData[] = [
         images: ["/projects/vlrscraper/vlrscraper-player.png", "/projects/vlrscraper/vlrscraper-team.png", "/projects/vlrscraper/vlrscraper-leaderboard.png", "/projects/vlrscraper/vlrscraper-dashboard.png"]
     },
     {
-        header: {icon: "/pfp.gif", alt: "Project icon", name: "SubwayCrafters"},
-        description: "SubwayCrafters is a feature-rich, infinitly generating runner game, built on Spigot.",
+        header: {icon: "/pfp.gif", alt: "Project icon", name: "xRunner"},
+        description: "xRunner is a feature-rich, infinitly generating runner game, built on Spigot.",
         details: [
             {category: "Language", details: "Java"},
             {category: "Platform", details: "Spigot, Paper"},
