@@ -54,6 +54,8 @@ function Contact() {
                     const fieldName = message.substring(index + 1, message.lastIndexOf("'"));
                     setMessage(message.charAt(index).toUpperCase() + fieldName + " is invalid.")
                     break;
+                case "SEND_FAILED":
+                    setMessage("Failed to send, please try again.")
             }
             return;
         }
