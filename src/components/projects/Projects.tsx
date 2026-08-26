@@ -1,6 +1,6 @@
 import {useEffect, useRef, useState} from "react";
 import ProjectInfo from "./ProjectInfo.tsx";
-import ProjectImages from "./ProjectImages.tsx";
+import ProjectImages from "./images/ProjectImages.tsx";
 import {projects} from "./ProjectData.tsx";
 import SectionTitle from "../common/SectionTitle.tsx";
 import {observeVisible} from "../../ObserveVisibleHook.tsx";
