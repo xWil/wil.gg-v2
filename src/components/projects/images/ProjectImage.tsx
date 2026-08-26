@@ -1,10 +1,16 @@
 import {useImage} from "../../imageview/ImageContext.tsx";
 
-function ProjectImage({ image, isActive }: { image:string, isActive: boolean }) {
+export interface ProjectImageProps {
+    image: string
+    isActive: boolean
+    className?: string
+}
+
+function ProjectImage({ image, isActive, className }: ProjectImageProps) {
     const {setImage} = useImage();
     return (
         <div key={image}
-             className="relative min-w-0 min-h-0 overflow-hidden rounded-sm shadow-black shadow-xs transition-transform duration-200 hover:scale-[1.02]">
+             className={`relative min-w-0 min-h-0 overflow-hidden rounded-sm shadow-black shadow-xs transition-transform duration-200 hover:scale-[1.02] ${className}`}>
             <img src={image} alt="Project image"
                  loading={isActive ? "eager" : "lazy"} decoding="async"
                  onClick={() => setImage(image)}
