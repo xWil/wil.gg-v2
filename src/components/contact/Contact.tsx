@@ -2,9 +2,13 @@ import SectionTitle from "../common/SectionTitle.tsx";
 import ContactField from "./ContactField.tsx";
 import SendButton from "./SendButton.tsx";
 import * as React from "react";
-import {useState} from "react";
+import {useRef, useState} from "react";
+import {observeVisible} from "../../ObserveVisibleHook.tsx";
 
 function Contact() {
+    const ref = useRef<HTMLSpanElement>(null);
+    const isVisible: boolean = observeVisible(ref);
+
     const [message, setMessage] = useState("");
     const [success, setSuccess]= useState(false);
 
@@ -69,7 +73,7 @@ function Contact() {
         <section id="contact" className="min-h-screen pb-16 pt-32 px-4 md:px-8 lg:px-16 xl:px-24 flex flex-col items-center justify-center">
             <div className="flex flex-col h-fit w-full max-w-[clamp(12rem,80vw,42rem)]">
                 <SectionTitle title="Contact"/>
-                <span className="text-text-secondary text-xl md:text-2xl mb-4 sm:mb-6">Let me know what you're thinking</span>
+                <span ref={ref} className={`text-text-secondary text-xl md:text-2xl mb-4 sm:mb-6 transition-transform duration-300 ${isVisible ?  "" : "-translate-x-10 opacity-0" }`}>Let me know what you're thinking</span>
 
                 <form noValidate={true} onSubmit={handleSubmit} onChange={() => setMessage("")} className="flex flex-col gap-5">
                     <div className="flex max-sm:flex-col gap-5 w-full">
