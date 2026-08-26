@@ -34,13 +34,13 @@ export const projects: ProjectData[] = [
     },
     {
         header: {icon: "/pfp.gif", alt: "Project icon", name: "xRunner"},
-        description: "xRunner is a feature-rich, infinitly generating runner game, built on Spigot.",
+        description: "xRunner is a feature-rich, infinitely generating runner game, built on Spigot.",
         details: [
             {category: "Language", details: "Java"},
             {category: "Platform", details: "Spigot, Paper"},
             {category: "Database", details: "PostgreSQL, MySQL, SQLite"}
         ],
         link: null,
-        images: ["/projects/imposter/imposter-lobby.png", "/projects/imposter/imposter-question.png", "/projects/imposter/imposter-answers.png", "/projects/imposter/imposter-leaderboard.png"]
+        images: ["/projects/xrunner/xrunner-level.png", "/projects/xrunner/xrunner-leaderboards.png", "/projects/xrunner/xrunner-dragon.png", "/projects/xrunner/xrunner-createmode.png"]
     }
 ];
