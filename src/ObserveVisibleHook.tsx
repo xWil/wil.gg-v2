@@ -12,7 +12,7 @@ export function observeVisible(ref: RefObject<HTMLElement | null>): boolean {
                 setIntersecting(true);
                 observer.disconnect();
             }
-        });
+        }, {threshold: 0.20});
 
         observer.observe(element);
         return () => {

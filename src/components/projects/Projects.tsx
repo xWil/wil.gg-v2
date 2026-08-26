@@ -3,8 +3,12 @@ import ProjectInfo from "./ProjectInfo.tsx";
 import ProjectImages from "./ProjectImages.tsx";
 import {projects} from "./ProjectData.tsx";
 import SectionTitle from "../common/SectionTitle.tsx";
+import {observeVisible} from "../../ObserveVisibleHook.tsx";
 
 function Projects() {
+    const ref = useRef<HTMLDivElement>(null);
+    const isVisible: boolean = observeVisible(ref);
+
     const [active, setActive] = useState(0);
     const bands = useRef<(HTMLDivElement | null)[]>([]);
 
@@ -34,7 +38,7 @@ function Projects() {
                     <SectionTitle title="Projects"/>
 
                     <div className="w-full h-fit flex gap-4 md:gap-8 items-center justify-between max-sm:flex-col">
-                        <div className="grid">
+                        <div ref={ref} className={`grid transition-transform duration-300 ${isVisible ?  "" : "-translate-x-16 opacity-0" }`}>
                             {projects.map((project, i) => (
                                 <ProjectInfo key={project.header.name} project={project} position={i - active}/>
                             ))}
